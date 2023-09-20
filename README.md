@@ -1,1 +1,7 @@
-# workDayScheduler
+## WORKDAY SCHEDULER
+
+## MOTIVATION
+
+## DESCRIPTION
+
+##
