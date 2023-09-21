@@ -1,6 +1,14 @@
 const localeSettings = {};
 dayjs.locale(localeSettings);
 
+function updateTime() {
+
+  var currentDateTime = dayjs().format('MMM DD, YYYY [at] hh:mm:ss');
+  $('#current-dateTime').html(currentDateTime);
+  
+  }
+  setInterval(updateTime, 1000);
+
 // Wrap all code that interacts with the DOM in a call to jQuery to ensure that
 // the code isn't run until the browser has finished rendering all the elements
 // in the html.
@@ -11,15 +19,20 @@ $(function () {
   // function? How can DOM traversal be used to get the "hour-x" id of the
   // time-block containing the button that was clicked? How might the id be
   // useful when saving the description in local storage?
-  const currentHour = dayjs().format('H');
+  const currentHour = dayjs().format('HH');
 
   function colorByHour() {
     $('.time-block').each(function () {
-      const blockHour = parseInt(this.id);
-      $(this).toggleClass('past', blockHour < currentHour);
-      $(this).toggleClass('present', blockHour === currentHour),
-        $(this).toggleClass('future', blockHour > currentHour),
-        + block
+      const blockHour = parseInt(this.id.split('-')[1]);
+      console.log(blockHour);
+      console.log(parseInt(currentHour));
+      if (blockHour < parseInt(currentHour)){
+        $(this).addClass('past');
+      } else if (blockHour === parseInt(currentHour)) {
+         $(this).addClass('present');
+      }else {
+        $(this).addClass('future');
+      }
     });
   }
 
@@ -38,19 +51,6 @@ $(function () {
     });
   }
 
-  function colorRefresh() {
-    $('.time-block').each(function () {
-      const blockHour = parseInt(this.id);
-      if (blockHour == currentHour) {
-        $(this).removeClass('past future').addClass('present');
-      } else if (blockHour < currentHour) {
-        $(this).removeClass('future present').addClass('past');
-      } else {
-        $(this).removeClass('past present').addClass('future');
-      }
-    });
-  }
-
   $('.time-block').each(function () {
     const key = $(this).attr('id');
     const value = localStorage.getItem(key);
@@ -63,18 +63,17 @@ $(function () {
   // TODO: Add code to display the current date in the header of the page.
   function updateTime() {
     const currentDate = dayjs().format('dddd, MMMM D, YYYY');
-    const currentTime = dayjs().format('hh:mm A');
+    const currentTime = dayjs().format('hh:mm:ss A');
     const date = $('.date');
     const time = $('.time');
-    dateElement.text(date);
-    timeElement.text(time);
+    date.text(date);
+    time.text(time);
+    $('.date').text(currentDate);
+    $('.time').text(currentTime);
   }
-
-
 
   colorByHour();
   enterText();
-  colorRefresh();
+  
 
-  setInterval(updateTime, 1000);
 });
