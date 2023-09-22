@@ -3,6 +3,14 @@ dayjs.locale(localeSettings);
 
 function updateTime() {
 
+  var resetScheduler = document.getElementById('.reset-btn');
+  $(".reset-btn").on('click', function () {
+    resetScheduler.removeChildren
+  });
+  
+    
+
+
   var currentDateTime = dayjs().format('MMM DD, YYYY [at] hh:mm:ss');
   $('#current-dateTime').html(currentDateTime);
   
