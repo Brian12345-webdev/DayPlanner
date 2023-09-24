@@ -7,6 +7,6 @@ THIS APP allows a user to plan out their daily routines, as well as, saves the d
 ## PROBLEM AND SOLUTION
 THE PROBLEM a users lack of scheduling has led to daily routines being missed or delayed. THE SOLUTION is to develop a daily scheduler that will stream line a users daily routines and activities.
 ## SITE ACCESS
-# SITE:
+# SITE: https://brian12345-webdev.github.io/DayPlanner/
 
-# GITHUB:
+# GITHUB: https://github.com/Brian12345-webdev/DayPlanner
