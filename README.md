@@ -10,3 +10,5 @@ THE PROBLEM a users lack of scheduling has led to daily routines being missed or
 # SITE: https://brian12345-webdev.github.io/DayPlanner/
 
 # GITHUB: https://github.com/Brian12345-webdev/DayPlanner
+
+![Alt text](image.png)
